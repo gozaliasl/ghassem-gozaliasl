@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Ghassem Gozaliasl - Academic Profile</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #fafbfc;
+            color: #2d3748;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Subtle background pattern */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 25% 25%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(16, 185, 129, 0.05) 0%, transparent 50%);
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .academic-card {
+            background: white;
+            border-radius: 12px;
+            padding: 3rem;
+            margin-bottom: 2rem;
+            box-shadow: 
+                0 1px 3px rgba(0, 0, 0, 0.05),
+                0 10px 25px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .academic-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 
+                0 4px 12px rgba(0, 0, 0, 0.08),
+                0 20px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            font-weight: 700;
+            color: white;
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.2);
+            position: relative;
+        }
+
+        .profile-image::after {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            border: 2px solid rgba(59, 130, 246, 0.2);
+            border-radius: 50%;
+        }
+
+        .header-content {
+            flex: 1;
+        }
+
+        .name {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+        }
+
+        .title {
+            font-size: 1.25rem;
+            color: #3b82f6;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .credentials {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .credential-badge {
+            background: linear-gradient(135deg, #3b82f6, #1e40af);
+            color: white;
+            padding: 0.4rem 0.9rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            box-shadow: 0 2px 8px rgba(59, 130, 246, 0.2);
+        }
+
+        .affiliations {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .affiliation-tag {
+            background: #f1f5f9;
+            color: #475569;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: 1px solid #e2e8f0;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.875rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #3b82f6, #10b981);
+            border-radius: 2px;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border: 1px solid #e2e8f0;
+            border-left: 4px solid #3b82f6;
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .metric-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .metric-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            border-color: #3b82f6;
+        }
+
+        .metric-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #3b82f6;
+            display: block;
+            line-height: 1;
+        }
+
+        .metric-label {
+            color: #64748b;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 0.5rem;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .project-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            border-color: #3b82f6;
+        }
+
+        .project-status {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 1rem;
+        }
+
+        .status-featured {
+            background: #fef3c7;
+            color: #92400e;
+            border: 1px solid #fbbf24;
+        }
+
+        .status-active {
+            background: #d1fae5;
+            color: #065f46;
+            border: 1px solid #10b981;
+        }
+
+        .status-completed {
+            background: #dbeafe;
+            color: #1e40af;
+            border: 1px solid #3b82f6;
+        }
+
+        .project-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 0.75rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .project-tag {
+            background: #f1f5f9;
+            color: #475569;
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            border: 1px solid #e2e8f0;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .skill-category {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            border-left: 4px solid #3b82f6;
+        }
+
+        .skill-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            padding: 0.25rem 0;
+            color: #475569;
+            position: relative;
+            padding-left: 1rem;
+        }
+
+        .skill-list li::before {
+            content: '•';
+            color: #3b82f6;
+            position: absolute;
+            left: 0;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, #3b82f6, #10b981);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.5rem;
+            top: 1.5rem;
+            width: 12px;
+            height: 12px;
+            background: #3b82f6;
+            border: 3px solid white;
+            border-radius: 50%;
+            box-shadow: 0 0 0 3px #e2e8f0;
+        }
+
+        .degree {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 0.25rem;
+        }
+
+        .institution {
+            color: #3b82f6;
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+
+        .year {
+            color: #64748b;
+            font-size: 0.875rem;
+        }
+
+        .languages {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 1rem;
+            justify-content: center;
+        }
+
+        .language-tag {
+            background: #f8fafc;
+            color: #475569;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.875rem;
+            border: 1px solid #e2e8f0;
+        }
+
+        .contact-section {
+            text-align: center;
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            color: white;
+            padding: 3rem;
+            border-radius: 12px;
+            margin-top: 3rem;
+        }
+
+        .contact-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            opacity: 0.9;
+        }
+
+        .image-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-top: 1.5rem;
+        }
+
+        .gallery-image {
+            width: 45%;
+            border-radius: 8px;
+            border: 2px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-image:hover {
+            transform: scale(1.02);
+            border-color: #3b82f6;
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .academic-card {
+                padding: 2rem;
+            }
+            
+            .header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .name {
+                font-size: 2.5rem;
+            }
+            
+            .projects-grid,
+            .metrics-grid,
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .profile-image {
+                width: 150px;
+                height: 150px;
+                font-size: 3rem;
+            }
+
+            .gallery-image {
+                width: 100%;
+            }
+        }
+
+        /* Smooth scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="academic-card fade-in">
+            <div class="header">
+                <div class="profile-image" style="background: none; overflow: hidden;">
+                    <img src="ghassem.jpeg" alt="Dr. Ghassem Gozaliasl" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;" />
+                </div>
+                <div class="header-content">
+                    <h1 class="name">Dr. Ghassem Gozaliasl</h1>
+                    <p class="title">Astrophysicist & AI Researcher | Dual Ph.D. | Docent</p>
+                    <div class="credentials">
+                        <span class="credential-badge">Ph.D. Astronomy</span>
+                        <span class="credential-badge">Ph.D. Astrophysics</span>
+                        <span class="credential-badge">Docent</span>
+                        <span class="credential-badge">COSMOS-Web Leader</span>
+                        <span class="credential-badge">Euclid Consortium</span>
+                    </div>
+                    <div class="affiliations">
+                        <span class="affiliation-tag">🏛️ Aalto University - Computer Science</span>
+                        <span class="affiliation-tag">🌌 University of Helsinki - Physics</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="academic-card fade-in">
+            <h2 class="section-title">Recent Breakthrough Discovery</h2>
+            <div class="highlight-box">
+                <p><strong>ESA Picture of the Month (April 2025):</strong> Led the COSMOS-Web galaxy group team that discovered the <strong>largest sample of galaxy groups</strong> detected by the James Webb Space Telescope. This groundbreaking work, featured as ESA's official Picture of the Month, reveals galaxy groups from when the Universe was only <strong>1.9 billion years old</strong>—pushing the boundaries of cosmic archaeology and our understanding of early structure formation.</p>
+            </div>
+        </div>
+
+        <div class="academic-card fade-in">
+            <h2 class="section-title">Latest Achievement: COSMOS2025 Public Release</h2>
+            <div class="highlight-box">
+                <p><strong>June 2025:</strong> Led the creation and public release of the <strong>largest deep space catalogue ever created</strong> from the James Webb Space Telescope's COSMOS-Web survey. This unprecedented dataset from 255 hours of JWST observations is now publicly available in an easily searchable format, democratizing access to the early universe for scientists, students, educators, and the public worldwide.</p>
+                
+                <p style="margin-top: 1rem;"><strong>"This public release of the largest deep space catalogue ever created is a remarkable step for science and society. It democratizes access to the early universe, enabling not only scientists but also students, educators, and the public to explore our cosmic origins interactively. It's especially exciting that researchers from Finland have contributed to this effort — showcasing how global collaboration and open science are shaping the future of discovery."</strong> - Dr. Gozaliasl</p>
+                
+                <p style="margin-top: 1rem;"><strong>International Recognition:</strong> The COSMOS-Web data release has been covered by major international institutions, with Dr. Gozaliasl's contributions specifically highlighted by <strong>Rochester Institute of Technology</strong> in their official announcement. RIT emphasized how his research traces "how galaxies shut down star formation, undergo morphological transformation, and how these processes are shaped by their environment across cosmic time, even predicting galaxy properties using AI-driven methods."</p>
+                
+                <p style="margin-top: 1rem; font-size: 0.9rem; color: #64748b;">
+                    <strong>Official Coverage:</strong> 
+                    <a href="https://www.aalto.fi/en/news/james-webb-telescope-gives-unprecedented-open-access-to-images-of-the-deep-universe" target="_blank" style="color: #3b82f6; text-decoration: none; margin: 0 0.5rem;">Aalto University News</a> | 
+                    <a href="https://www.rit.edu/news/cosmos-web-opens-window-universe-scientists-and-citizens" target="_blank" style="color: #3b82f6; text-decoration: none; margin: 0 0.5rem;">RIT Official Release</a>
+                </p>
+            </div>
+        </div>
+
+        <div class="academic-card fade-in">
+            <h2 class="section-title">ESA Picture of the Month – April 2025</h2>
+            <div class="highlight-box">
+                <p>
+                    Two JWST images from our COSMOS-Web survey were selected as the <strong>European Space Agency's Picture of the Month</strong> for April and August 2025.
+                    The April image shows the largest galaxy group sample ever observed at early cosmic times. Below is the raw image and a processed overlay highlighting hot gas distribution (purple), revealing dark matter halos.
+                </p>
+                <p style="margin-top: 1rem; font-size: 0.9rem; color: #64748b;">
+                    <strong>Official ESA Links:</strong> 
+                    <a href="https://esawebb.org/images/potm2504a/" target="_blank" style="color: #3b82f6; text-decoration: none; margin: 0 0.5rem;">Raw Image</a> | 
+                    <a href="https://esawebb.org/images/potm2504b/" target="_blank" style="color: #3b82f6; text-decoration: none; margin: 0 0.5rem;">Dark Matter Overlay</a>
+                </p>
+                <div class="image-gallery">
+                    <img src="potm2504a.jpg" alt="JWST COSMOS-Web Image - April 2025" class="gallery-image" />
+                    <img src="potm2504b.jpg" alt="JWST COSMOS-Web with Dark Matter Overlay" class="gallery-image" />
+                </div>
+            </div>
+        </div>
+
+        <div class="academic-card fade-in">
+            <h2 class="section-title">Brightest Group Galaxies Catalog (0.08 < z < 3.7)</h2>
+            <div class="highlight-box">
+                <p>
+                    Comprehensive study of <strong>Brightest Group Galaxies (BGGs)</strong> spanning cosmic time from the local universe to early epochs. This research catalog covers an unprecedented redshift range of <strong>0.08 < z < 3.7</strong>, tracing the evolution of the most massive galaxies in group environments across over 11 billion years of cosmic history.
+                </p>
+                <p style="margin-top: 1rem;">
+                    The composite image below showcases the diversity of brightest group galaxies identified through our COSMOS-Web survey, revealing how these massive central galaxies have evolved through mergers, accretion, and environmental interactions across cosmic time. The catalog represents a cornerstone dataset for understanding galaxy formation and the growth of massive structures in the universe.
+                </p>
+                <div style="display: flex; justify-content: center; margin-top: 1.5rem;">
+                    <img src="pic2.jpeg" alt="Brightest Group Galaxies Catalog - Composite image showing BGG samples across redshift range 0.08 < z < 3.7" style="width: 100%; max-width: 800px; border-radius: 8px; border: 2px solid #e2e8f0; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+                </div>
+                <p style="margin-top: 1rem; font-size: 0.9rem; color: #64748b; text-align: center;">
+                    <em>Composite image of Brightest Group Galaxies from the COSMOS-Web catalog spanning redshifts 0.08 < z < 3.7, demonstrating the morphological diversity and evolution of massive central galaxies across cosmic time.</em>
+                </p>
+            </div>
+        </div>
+
+        <div class="academic-card fade-in">
+            <h2 class="section-title">AI-Driven Galaxy Parameter Estimation: Self-Organizing Maps</h2>
+            <div class="highlight-box">
+                <p><strong>Led groundbreaking research:</strong> <a href="https://arxiv.org/pdf/2506.04138" target="_blank" style="color: #3b82f6; text-decoration: none;">"COSMOS-Web: Estimating Physical Parameters of Galaxies Using Self-Organizing Maps"</a> - A revolutionary application of unsupervised machine learning to extract physical properties of galaxies directly from JWST photometric data.</p>
+                
+                <p style="margin-top: 1rem;">Using Self-Organizing Maps (SOMs), we developed a novel method to estimate key galaxy parameters including <strong>redshift, stellar mass, star formation rate (SFR), specific SFR (sSFR), and age</strong> out to z=3.5. The approach efficiently projects high-dimensional galaxy color information onto interpretable 2D maps, revealing how physical properties vary among galaxies with similar spectral energy distributions.</p>
+                
+                <p style="margin-top: 1rem;"><strong>Validation & Performance:</strong> First validated using HORIZON-AGN simulation mock catalogs, then successfully applied to real COSMOS-Web observations. Performance metrics (NMAD and RMSE typically 0.1-0.3) demonstrate exceptional accuracy despite the complexity of real galaxy populations.</p>
+                
+                <div style="display: flex; justify-content: center; margin-top: 1.5rem;">
+                    <img src="Flow_Chart.jpg" alt="Self-Organizing Maps workflow for galaxy parameter estimation from COSMOS-Web data" style="width: 100%; max-width: 900px; border-radius: 8px; border: 2px solid #e2e8f0; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+                </div>
+                <p style="margin-top: 1rem; font-size: 0.9rem; color: #64748b; text-align: center;">
+                    <em>Complete workflow of the Self-Organizing Maps methodology: from input HORIZON-AGN and COSMOS-Web data through training phases to final galaxy parameter predictions. The SOM effectively maps high-dimensional photometric data to physical properties across different redshift bins.</em>
+                </p>
+            </div>
+        </div>
+
+        <div class="academic-card fade-in">
+            <h2 class="section-title">Research Impact & Metrics</h2>
+            <div class="metrics-grid">
+                <div class="metric-item">
+                    <span class="metric-number">220+</span>
+                    <span class="metric-label">Publications</span>
+                </div>
+                <div class="metric-item">
+                    <span class="metric-number">134</span>
+                    <span class="metric-label">Media Articles</span>
+                </div>
+                <div class="metric-item">
+                    <span class="metric-number">770M+</span>
+                    <span class="metric-label">Global Reach</span>
+                </div>
+                <div class="metric-item">
+                    <span class="metric-number">34</span>
+                    <span class="metric-label">Countries</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="academic-card fade-in">
+            <h2 class="section-title">Global Media Coverage & Impact</h2>
+            <div class="highlight-box">
+                <p><strong>Worldwide Recognition:</strong> Dr. Gozaliasl's research achievements have generated unprecedented global media coverage across multiple breakthroughs:</p>
+                
+                <div style="margin: 1rem 0; padding: 1rem; background: #f8fafc; border-radius: 6px; border-left: 4px solid #10b981;">
+                    <p><strong>🏆 ESA Picture of the Month (April 2025):</strong> Galaxy group discovery covered by <strong>134 articles</strong> across <strong>34 countries</strong>, reaching over <strong>770 million people</strong> worldwide with $7.1+ million advertising value equivalent.</p>
+                </div>
+                
+                <div style="margin: 1rem 0; padding: 1rem; background: #f8fafc; border-radius: 6px; border-left: 4px solid #3b82f6;">
+                    <p><strong>📊 COSMOS2025 Catalog Release (June 2025):</strong> Featured prominently by <strong>Rochester Institute of Technology</strong> as a major international achievement, highlighting Dr. Gozaliasl's pioneering work in galaxy evolution and AI-driven astronomical methods. Expected to generate significant additional media coverage globally.</p>
+                </div>
+                
+                <p style="margin-top: 1rem; font-size: 0.9rem; color: #64748b;">
+                    <strong>Coverage Languages:</strong> English, Indonesian, Vietnamese, Finnish, Portuguese, Spanish, German, Italian, and more
+                </p>
+            </div>
+            
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3 class="project-title">🇺🇸 North American Coverage</h3>
+                    <p>Featured in major US outlets including <strong>MSN</strong>, <strong>Yahoo News</strong>, <strong>Live Science</strong>, and numerous regional publications with combined reach exceeding 300M people.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Space Photo of the Week</span>
+                        <span class="project-tag">Record-breaking Discovery</span>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <h3 class="project-title">🇮🇳 Indian Media Impact</h3>
+                    <p>Extensive coverage across India's leading tech and science publications including <strong>NDTV</strong>, <strong>The Economic Times</strong>, <strong>Moneycontrol</strong>, and <strong>Asian News International</strong>.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Science Headlines</span>
+                        <span class="project-tag">Technology News</span>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <h3 class="project-title">🇪🇺 European Recognition</h3>
+                    <p>Featured across European media including Finnish <strong>YLE</strong>, Portuguese <strong>Observador</strong>, Spanish <strong>Europa Press</strong>, and Italian <strong>MEDIA INAF</strong>.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Scientific Achievement</span>
+                        <span class="project-tag">ESA Feature</span>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <h3 class="project-title">🌏 Asian & Global Reach</h3>
+                    <p>International coverage spanning Indonesia, Vietnam, Singapore, Malaysia, Hong Kong, and beyond, demonstrating the universal appeal of the discovery.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Multilingual Coverage</span>
+                        <span class="project-tag">Global Science News</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="academic-card fade-in">
+            <h2 class="section-title">Publications & Research Output</h2>
+            <div class="highlight-box">
+                <p><strong>Prolific Research Portfolio:</strong> With <strong>220+ peer-reviewed publications</strong>, Dr. Gozaliasl has established himself as a leading figure in modern astrophysics. His work spans high-impact journals including <em>Astronomy & Astrophysics</em>, <em>Monthly Notices of the Royal Astronomical Society</em>, <em>Astrophysical Journal</em>, and <em>Nature Machine Intelligence</em>.</p>
+                
+                <div style="margin-top: 1.5rem;">
+                    <h4 style="color: #3b82f6; margin-bottom: 0.5rem;">Recent High-Impact Publications:</h4>
+                    <ul style="list-style: none; padding-left: 0;">
+                        <li style="margin-bottom: 0.5rem;">📄 <strong>COSMOS-Web Galaxy Groups Catalog</strong> - <em>Astronomy & Astrophysics</em> (2025)</li>
+                        <li style="margin-bottom: 0.5rem;">📄 <strong>Euclid Preparation Series</strong> - Multiple papers on cosmological surveys and data analysis</li>
+                        <li style="margin-bottom: 0.5rem;">📄 <strong>Machine Learning for COVID-19 Diagnostics</strong> - <em>Nature Machine Intelligence</em> (2021)</li>
+                        <li style="margin-bottom: 0.5rem;">📄 <strong>Galaxy Evolution in COSMOS Field</strong> - <em>Monthly Notices RAS</em> (2019-2024)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="academic-card fade-in">
+            <h2 class="section-title">Professional Overview</h2>
+            <div class="highlight-box">
+                <p><strong>Leading Interdisciplinary Scientist</strong> bridging astrophysics, artificial intelligence, and computational physics. Currently directing the "USA-pilot" (FARIA) project of PlasmaAI while serving as Docent at the University of Helsinki. Dual Ph.D. holder with extensive expertise in galaxy evolution, machine learning applications in astronomy, and space mission data analysis. <strong>Team Leader</strong> for groundbreaking COSMOS-Web discoveries featured as ESA's Picture of the Month and creator of the largest publicly available deep space catalog. Active member of major international collaborations including the Euclid Consortium and multiple ESA missions.</p>
+            </div>
+        </div>
+
+        <div class="academic-card fade-in">
+            <h2 class="section-title">Research Areas</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3 class="skill-title">🌌 Astrophysics & Cosmology</h3>
+                    <ul class="skill-list">
+                        <li>Galaxy formation and evolution</li>
+                        <li>Galaxy groups and clusters</li>
+                        <li>Large-scale structure</li>
+                        <li>Dark matter and dark energy</li>
+                        <li>Exoplanetary systems</li>
+                        <li>Brightest Group Galaxies (BGGs)</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3 class="skill-title">🤖 AI & Machine Learning</h3>
+                    <ul class="skill-list">
+                        <li>Deep learning for astronomy</li>
+                        <li>Computer vision applications</li>
+                        <li>Predictive modeling</li>
+                        <li>Time series analysis</li>
+                        <li>Big Data interpretation</li>
+                        <li>MCMC sampling methods</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3 class="skill-title">🔬 Computational Physics</h3>
+                    <ul class="skill-list">
+                        <li>Numerical simulations</li>
+                        <li>Data quality algorithms</li>
+                        <li>Pipeline development</li>
+                        <li>Sub-grid modeling</li>
+                        <li>Turbulent transport physics</li>
+                        <li>High-performance computing</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3 class="skill-title">🛰️ Space Missions & Surveys</h3>
+                    <ul class="skill-list">
+                        <li>ESA Euclid mission</li>
+                        <li>JWST COSMOS-Web</li>
+                        <li>X-ray astronomy (XMM, Chandra)</li>
+                        <li>Multi-wavelength analysis</li>
+                        <li>Data calibration systems</li>
+                        <li>Survey design and planning</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="academic-card fade-in">
+            <h2 class="section-title">Current & Recent Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-status status-featured">FEATURED</div>
+                    <h3 class="project-title">COSMOS-Web Survey Leadership</h3>
+                    <p><strong>Team Leader</strong> for galaxy group discovery in the largest JWST imaging survey. Led the team that discovered the most extensive sample of galaxy groups using the Webb telescope, featured as ESA's Picture of the Month. Pioneering research using the Amico algorithm to detect groups back to 1.9 billion years after the Big Bang.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">JWST</span>
+                        <span class="project-tag">ESA Featured</span>
+                        <span class="project-tag">Team Leader</span>
+                        <span class="project-tag">Breakthrough Discovery</span>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-status status-active">ACTIVE</div>
+                    <h3 class="project-title">PlasmaAI - USA-pilot (FARIA)</h3>
+                    <p>Leading innovative research combining machine learning with physical ansatzes to address finite resolution limitations in numerical simulations. Developing sustainable computational tools for turbulent transport modeling.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Aalto University</span>
+                        <span class="project-tag">University of Michigan</span>
+                        <span class="project-tag">University of Helsinki</span>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-status status-active">ACTIVE</div>
+                    <h3 class="project-title">Euclid Mission</h3>
+                    <p>Long-term contributor to ESA's flagship cosmology mission since 2014. Developed data quality tools, algorithms, and pipelines for understanding dark energy and dark matter.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">ESA</span>
+                        <span class="project-tag">Euclid Consortium</span>
+                        <span class="project-tag">European</span>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-status status-completed">COMPLETED</div>
+                    <h3 class="project-title">COVID-19 AI Diagnostics</h3>
+                    <p>Developed AI-assisted tools for COVID-19 diagnosis combining chest imaging, clinical, and laboratory data. Contributed to open-source solutions for medical diagnostics during the pandemic.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">University of Cambridge</span>
+                        <span class="project-tag">Medical AI</span>
+                        <span class="project-tag">Public Health</span>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-status status-completed">COMPLETED</div>
+                    <h3 class="project-title">Exoplanet Prediction Systems</h3>
+                    <p>Successfully developed machine learning models to predict additional exoplanets in known planetary systems and analyzed mass-radius relationships. Advanced understanding of planetary system architecture through innovative AI approaches.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Machine Learning</span>
+                        <span class="project-tag">Exoplanets</span>
+                        <span class="project-tag">Predictive Modeling</span>
+                        <span class="project-tag">Research Complete</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="academic-card fade-in">
+            <h2 class="section-title">Education & Qualifications</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="degree">Doctor of Philosophy (Ph.D.) in Astronomy</div>
+                    <div class="year">2016</div>
+                    <p><em>Thesis: "Formation and evolution of the bright central galaxies in massive haloes"</em></p>
+                    <p>Supervisor: Prof. Alexis Finoguenov</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="degree">Doctor of Philosophy (Ph.D.) in Astrophysics</div>
+                    <div class="institution">University of Tabriz, Iran</div>
+                    <div class="year">2014</div>
+                    <p><em>Thesis: "The evolution and formation of Fossil galaxy groups"</em></p>
+                    <p>Supervisors: Prof. Habib G. Khosroshahi & Prof. Davood M. Jassur</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="degree">Docent (Associate Professor) Qualification</div>
+                    <div class="institution">University of Helsinki, Finland</div>
+                    <div class="year">Awarded</div>
+                    <p><em>Recognition of exceptional research achievements and teaching excellence in astrophysics</em></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="academic-card fade-in">
+            <h2 class="section-title">Notable Achievements</h2>
+            <div class="highlight-box">
+                <p><strong>Scientific Leadership:</strong> Successfully led international collaborations across three continents, published 220+ peer-reviewed papers, and contributed to major space missions. Recognized as Docent at the University of Helsinki, demonstrating excellence in both research and teaching.</p>
+                
+                <p><strong>Technical Innovation:</strong> Developed cutting-edge algorithms for space mission data quality, created novel AI applications for medical diagnostics during COVID-19, and pioneered machine learning approaches for astronomical big data challenges.</p>
+                
+                <p><strong>Recent Breakthrough:</strong> In April 2025, led the COSMOS-Web galaxy group team to discover the largest sample of galaxy groups detected by the James Webb Space Telescope, featured as ESA's Picture of the Month. This work pushed galaxy group detection back to when the Universe was only 1.9 billion years old, representing a major leap in our understanding of early cosmic structure formation.</p>
+            </div>
+        </div>
+
+        <div class="academic-card fade-in">
+            <h2 class="section-title">Languages & Communication</h2>
+            <div class="languages">
+                <span class="language-tag">English (Fluent)</span>
+                <span class="language-tag">Persian (Native)</span>
+                <span class="language-tag">Azerbaijani (Native)</span>
+                <span class="language-tag">Turkish (Advanced)</span>
+                <span class="language-tag">Finnish (Intermediate)</span>
+                <span class="language-tag">Arabic (Basic)</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="contact-section">
+        <h2 class="contact-title">Professional Contact</h2>
+        <p class="contact-info">
+            Available for academic collaborations, research partnerships,<br>
+            and consultations in astrophysics and AI applications.<br>
+            <strong>Phone:</strong> +358 50 412 3209<br>
+            <strong>Location:</strong> Helsinki, Finland
+        </p>
+    </div>
+
+    <script>
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Initialize animations when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            // Observe all cards for scroll animation
+            document.querySelectorAll('.fade-in').forEach(card => {
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>
+                
