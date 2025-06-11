@@ -160,7 +160,7 @@ video.background-video { opacity: 0.08 !important; }
             transition: margin-left 0.3s ease;
         }
 
-        /* Full page background video */
+        /* Full page background video - UPDATED */
         .page-background-video {
             position: fixed;
             top: 0;
@@ -168,7 +168,7 @@ video.background-video { opacity: 0.08 !important; }
             width: 100%;
             height: 100%;
             z-index: -2;
-            opacity: 0.15;
+            opacity: 0.25; /* Increased opacity for more natural appearance */
             pointer-events: none;
         }
 
@@ -180,7 +180,7 @@ video.background-video { opacity: 0.08 !important; }
             min-height: 100%;
             transform: translate(-50%, -50%);
             object-fit: cover;
-            filter: blur(0.5px);
+            filter: blur(0.8px) brightness(1.1) contrast(0.9); /* Enhanced natural look */
         }
 
         /* Subtle background pattern */
@@ -234,6 +234,7 @@ video.background-video { opacity: 0.08 !important; }
             border-radius: 12px;
         }
 
+        /* Header background videos - UPDATED */
         .header-background-videos {
             position: absolute;
             top: 0;
@@ -241,7 +242,7 @@ video.background-video { opacity: 0.08 !important; }
             width: 100%;
             height: 100%;
             z-index: -1;
-            opacity: 0.2;
+            opacity: 0.3; /* Increased opacity for better visibility */
             pointer-events: none;
         }
 
@@ -253,7 +254,7 @@ video.background-video { opacity: 0.08 !important; }
             min-height: 100%;
             transform: translate(-50%, -50%);
             object-fit: cover;
-            filter: blur(0.5px);
+            filter: blur(0.8px) brightness(1.1) contrast(0.9); /* Enhanced natural look */
         }
 
         .profile-image {
@@ -783,7 +784,7 @@ video.background-video { opacity: 0.08 !important; }
 <body>
     <!-- Full Page Background Video -->
     <div class="page-background-video">
-        <video autoplay muted loop>
+        <video id="backgroundVideo" autoplay muted loop>
             <source src="potm2504a.m4v" type="video/mp4">
         </video>
     </div>
@@ -816,7 +817,7 @@ video.background-video { opacity: 0.08 !important; }
                 <div class="header">
                     <!-- Header Background Video -->
                     <div class="header-background-videos">
-                        <video class="header-video" autoplay muted loop>
+                        <video id="headerVideo" class="header-video" autoplay muted loop>
                             <source src="potm2504b.m4v" type="video/mp4">
                         </video>
                     </div>
@@ -1155,6 +1156,28 @@ video.background-video { opacity: 0.08 !important; }
                             <span class="project-tag">XMM-LSS</span>
                         </div>
                     </div>
+                    <!-- Project: ML/AI in Universe Science -->
+                    <div class="project-card">
+                        <div class="project-status status-active">ACTIVE</div>
+                        <h3 class="project-title">ML/AI in Universe Science</h3>
+                        <p>
+                        A series of research projects led by my graduate and undergraduate students, applying advanced machine learning techniques to major challenges in astronomy. These include:
+                        <ul>
+                            <li>Exoplanet detection using TESS and Kepler data</li>
+                            <li>Galaxy morphology classification at high redshift</li>
+                            <li>Detection of strong gravitational lenses</li>
+                            <li>Stellar and galaxy property estimation using Self-Organizing Maps (SOMs)</li>
+                        </ul>
+                        In Spring 2025, we also launched a new course titled <em>"Application of ML in Universe Science"</em> for Master's students in Data Science, taught at the Department of Computer Science, Aalto University.
+                        </p>
+                        <div class="project-tags">
+                        <span class="project-tag">Aalto University – CS</span>
+                        <span class="project-tag">ML in Astronomy</span>
+                        <span class="project-tag">Graduate Teaching</span>
+                        <span class="project-tag">Strong Lensing</span>
+                        <span class="project-tag">Exoplanets</span>
+                        </div>
+                    </div>
                     <div class="project-card">
                         <div class="project-status status-active">ACTIVE</div>
                         <h3 class="project-title">BGG-X: Brightest Group Galaxies Legacy Project</h3>
@@ -1263,6 +1286,7 @@ video.background-video { opacity: 0.08 !important; }
                     <span class="language-tag">Arabic (Basic)</span>
                 </div>
             </div>
+            
         </div>
 
         <div class="contact-section">
@@ -1345,6 +1369,20 @@ video.background-video { opacity: 0.08 !important; }
             }
         ];
 
+        // Video speed control
+        function setVideoSpeed() {
+            const backgroundVideo = document.getElementById('backgroundVideo');
+            const headerVideo = document.getElementById('headerVideo');
+            
+            if (backgroundVideo) {
+                backgroundVideo.playbackRate = 0.25; // Very slow playback (1/4 speed)
+            }
+            
+            if (headerVideo) {
+                headerVideo.playbackRate = 0.25; // Very slow playback (1/4 speed)
+            }
+        }
+
         // Populate sidebar news
         function populateSidebarNews() {
             const sidebarContent = document.getElementById('sidebar-news-content');
@@ -1369,85 +1407,6 @@ video.background-video { opacity: 0.08 !important; }
             });
         }
 
-        // Populate featured articles
-        function populateFeaturedArticles() {
-            const container = document.querySelector('#featured-articles > div');
-            container.innerHTML = '';
-            
-            // Show top 4 featured articles
-            const featuredNews = newsData.slice(0, 4);
-            
-            featuredNews.forEach(article => {
-                const articleCard = document.createElement('div');
-                articleCard.style.cssText = `
-                    background: white;
-                    border: 1px solid #e2e8f0;
-                    border-radius: 8px;
-                    overflow: hidden;
-                    transition: all 0.3s ease;
-                    cursor: pointer;
-                `;
-                
-                articleCard.onmouseover = () => {
-                    articleCard.style.transform = 'translateY(-2px)';
-                    articleCard.style.boxShadow = '0 8px 25px rgba(0,0,0,0.1)';
-                    articleCard.style.borderColor = '#3b82f6';
-                };
-                
-                articleCard.onmouseout = () => {
-                    articleCard.style.transform = 'translateY(0)';
-                    articleCard.style.boxShadow = '';
-                    articleCard.style.borderColor = '#e2e8f0';
-                };
-                
-                articleCard.onclick = () => window.open(article.url, '_blank');
-                
-                articleCard.innerHTML = `
-                    <img src="${article.image}" 
-                         alt="${article.headline}" 
-                         style="width: 100%; height: 150px; object-fit: cover;" />
-                    <div style="padding: 1rem;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
-                            <span style="background: #1e293b; color: white; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.75rem; font-weight: 500;">
-                                ${article.source}
-                            </span>
-                            <span style="font-size: 0.75rem; color: #64748b;">${article.date}</span>
-                        </div>
-                        <h4 style="font-size: 0.9rem; font-weight: 600; margin-bottom: 0.5rem; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">
-                            ${article.headline}
-                        </h4>
-                        <div style="font-size: 0.75rem; color: #10b981; font-weight: 500;">
-                            ${article.reach}
-                        </div>
-                    </div>
-                `;
-                
-                container.appendChild(articleCard);
-            });
-        }
-
-        // Update news ticker
-        function updateTicker() {
-            const tickerText = document.getElementById('ticker-text');
-            if (tickerText) {
-                const headlines = newsData.map(article => 
-                    `${article.source}: ${article.headline.substring(0, 80)}${article.headline.length > 80 ? '...' : ''}`
-                );
-                
-                tickerText.textContent = headlines.join(' • ') + ' • ';
-            }
-        }
-
-        // Add CSS animation for ticker
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes scroll-left {
-                0% { transform: translateX(100%); }
-                100% { transform: translateX(-100%); }
-            }
-        `;
-        document.head.appendChild(style);
-
         // Intersection Observer for scroll animations
         const observerOptions = {
             threshold: 0.1,
@@ -1464,6 +1423,9 @@ video.background-video { opacity: 0.08 !important; }
 
         // Initialize everything when page loads
         document.addEventListener('DOMContentLoaded', () => {
+            // Set video speeds
+            setTimeout(setVideoSpeed, 500); // Small delay to ensure videos are loaded
+            
             // Populate news content
             populateSidebarNews();
             
@@ -1483,6 +1445,15 @@ video.background-video { opacity: 0.08 !important; }
         
         sidebar.addEventListener('mouseleave', () => {
             mainContent.style.marginLeft = '20px';
+        });
+
+        // Ensure video speed is set when videos load
+        document.getElementById('backgroundVideo').addEventListener('loadeddata', () => {
+            document.getElementById('backgroundVideo').playbackRate = 0.25;
+        });
+
+        document.getElementById('headerVideo').addEventListener('loadeddata', () => {
+            document.getElementById('headerVideo').playbackRate = 0.25;
         });
     </script>
 </body>
